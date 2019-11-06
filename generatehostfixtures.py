@@ -5,7 +5,7 @@ Used to regenerate the HostDetails fixtures to check the details of hosts specif
 import yaml
 
 from host_details.hostdetails import HostDetails
-from host_details.tests.hostnamemap import HOSTNAMEMAP
+from tests.hostnamemap import HOSTNAMEMAP
 from host_details import tests
 from host_details.compat import pkg_resources
 

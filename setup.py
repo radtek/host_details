@@ -36,4 +36,5 @@ setup(
                       'pyyaml>=3',
                       'Device42',
                       ],
+python_requires='>=3.7',
 )

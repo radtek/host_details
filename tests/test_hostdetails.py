@@ -2,7 +2,7 @@ import logging
 import yaml
 from parameterized import parameterized
 from host_details.tests import BaseTestCase
-from host_details.tests.hostnamemap import HOSTNAMEMAP
+from tests.hostnamemap import HOSTNAMEMAP
 from host_details.hostdetails import HostDetails
 from werkzeug.exceptions import BadRequest
 

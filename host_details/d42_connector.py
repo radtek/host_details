@@ -1,16 +1,12 @@
 """
 Connector to import things from device42 into hostinfo
 """
-try:
-    import ConfigParser
-except ImportError:
-    import configparser as ConfigParser
-
 import os
 from Device42.config import ConfigData
 from Device42.dev42.devices import Devices
 import requests
 
+from host_details.compat import ConfigParser
 
 ROLE_NORMALIZE = {
     'hostingnode': 'hn',
@@ -21,7 +17,7 @@ ROLE_NORMALIZE = {
 
 
 # pylint: disable=too-few-public-methods
-class D42Connector(object):
+class D42Connector():
     """ Provides object interface to d42 """
     def __init__(self):
         # parse configuration files to get session information.

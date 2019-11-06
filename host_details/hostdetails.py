@@ -7,16 +7,15 @@ import logging
 from collections import OrderedDict
 import yaml
 
+from host_details import static
 from host_details.compat import pkg_resources
-
 from host_details.excp import InvalidHostname, InvalidService, InvalidServiceSpec, InvalidServiceBadInstance
-
 from host_details.d42_connector import D42Connector
 
 LOGGER = logging.getLogger(__name__)
 
 
-class HostDetails(object):
+class HostDetails():
     """
     All the information/services based from Hostname
     """
@@ -257,7 +256,7 @@ class HostDetails(object):
                 self.details["security"]["role.service_owner"] = 'ops'
                 self.details["security"]["role.authorized"].append('engineering')
 
-    def which_service(self, service, instance=None, resource=False, management=False, shared=False, override=None):  # pylint:disable=too-many-arguments,too-many-return-statements
+    def which_service(self, service, instance=None, resource=False, management=False, shared=False, override=None):  # pylint:disable=r0911, r0912, r0913, r0915
         """
         Identify Which service to use based on hostname information and sets in details
         :param service: Service to be determined
@@ -275,7 +274,7 @@ class HostDetails(object):
 
         if override:
             if "vault" in override:
-                if self.details["datacenter"] == "jng":
+                if self.details["datacenter"] == "jng": #pylint: disable=no-else-return
                     return "jng4vault1.skytap-dev.net"
                 elif self.details["env"] == "5":
                     return "tuk5vaultvip1.qa.skytap.com"
@@ -451,14 +450,11 @@ class HostDetails(object):
         :param role: the server role, like mysql
         :return: role template dictionary
         """
-
-        from host_details import static
-
         rolefile_path = pkg_resources.resouce_filename(static, "roles/{}.yaml".format(self.details["function"]))
         LOGGER.debug("Opening rolefile: %s", rolefile_path)
         try:
             with open(rolefile_path, "r") as rolefile:
-                roletemplate = yaml.load(rolefile)
+                roletemplate = yaml.safe_load(rolefile)
         except IOError as error:
             if error.errno == 2:
                 # File not found
