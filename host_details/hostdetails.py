@@ -7,10 +7,9 @@ import logging
 from collections import OrderedDict
 import yaml
 
-from host_details import static
 from host_details.compat import pkg_resources
 from host_details.excp import InvalidHostname, InvalidService, InvalidServiceSpec, InvalidServiceBadInstance
-from host_details.d42_connector import D42Connector
+from host_details.d42_connector import D42Connector, load_config_files
 
 LOGGER = logging.getLogger(__name__)
 
@@ -191,26 +190,33 @@ class HostDetails():
 
         # for chassis and blades in d42, use their role to determine ownership
         if re.match('^c[0-9]*b[0-9]*', self.details['function']) is not None:
-            d42_connector = D42Connector()
-            self.details['d42'] = d42_connector.get_by_hostname(self.hostname)
-            if self.details['d42'].get('Role'):
-                self.details['function'] = self.details['d42']['Role']
-                if self.details['d42']['Role'] in ['hn', 'hostingnode']:
-                    self.details['owner'] = 'team-dataplane-compute'
-                elif self.details['d42']['Role'] in ['nhn', 'networkhostingnode']:
-                    self.details['owner'] = 'team-dataplane-networking'
-                elif self.details['d42']['Role'] in ['dbmanagementnode', 'managementnode',
-                                                     'nsxmanagementnode', 'rishost',
-                                                     'sshost', 'vsnhn', 'mn']:
-                    self.details['owner'] = 'team-tools-virtualinfrastructure'
-                else:
-                    self.details['owner'] = 'team-infra-systems'
+            self.load_from_device42()
 
         if self.details["owner"] == "team-unclassified":
             for owner, teamregex in self.team_ownership_regexes.items():
                 if re.search(teamregex, self.details["function"]):
                     self.details["owner"] = owner
                     break
+
+    def load_from_device42(self):
+        """
+        Load details about the device from Device42
+        :return:
+        """
+        d42_connector = D42Connector(load_config_files())
+        self.details['d42'] = d42_connector.get_by_hostname(self.hostname)
+        if self.details['d42'].get('Role'):
+            self.details['function'] = self.details['d42']['Role']
+            if self.details['d42']['Role'] in ['hn', 'hostingnode']:
+                self.details['owner'] = 'team-dataplane-compute'
+            elif self.details['d42']['Role'] in ['nhn', 'networkhostingnode']:
+                self.details['owner'] = 'team-dataplane-networking'
+            elif self.details['d42']['Role'] in ['dbmanagementnode', 'managementnode',
+                                                 'nsxmanagementnode', 'rishost',
+                                                 'sshost', 'vsnhn', 'mn']:
+                self.details['owner'] = 'team-tools-virtualinfrastructure'
+            else:
+                self.details['owner'] = 'team-infra-systems'
 
     def which_security(self):
         """
@@ -450,7 +456,7 @@ class HostDetails():
         :param role: the server role, like mysql
         :return: role template dictionary
         """
-        rolefile_path = pkg_resources.resouce_filename(static, "roles/{}.yaml".format(self.details["function"]))
+        rolefile_path = pkg_resources.resource_filename('host_details.static', "roles/{}.yaml".format(self.details["function"]))
         LOGGER.debug("Opening rolefile: %s", rolefile_path)
         try:
             with open(rolefile_path, "r") as rolefile:

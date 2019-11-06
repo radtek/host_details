@@ -18,6 +18,7 @@ from setuptools import setup, find_packages
 test_deps = ["coverage",
              "nose",
              "nose-parameterized",
+             "parameterized"
              "mock"]
 
 setup(
@@ -32,9 +33,8 @@ setup(
     extra_requires={
         "test": test_deps
     },
-    install_requires=["parameterized",
-                      'pyyaml>=3',
+    install_requires=['pyyaml>=3',
                       'Device42',
                       ],
-python_requires='>=3.7',
+    python_requires='>=3.7',
 )

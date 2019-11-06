@@ -3,10 +3,7 @@
 
 import sys
 
-if sys.version < 3.7:
-    import importlib_resources as pkg_resources
-else:
-    import importlib.resources as pkg_resources
+import pkg_resources
 
 try:
     import ConfigParser

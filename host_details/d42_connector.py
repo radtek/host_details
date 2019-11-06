@@ -19,36 +19,12 @@ ROLE_NORMALIZE = {
 # pylint: disable=too-few-public-methods
 class D42Connector():
     """ Provides object interface to d42 """
-    def __init__(self):
-        # parse configuration files to get session information.
-        #  Valid configurations can exist in the ansible
-        #  repo/inventories/d42.ini and ~/.config/d42.ini. Typically site
-        #  configuration would be included in the repo, and credentials in your
-        #  homedir. Also, all variables can be overriden/set through the
-        #  environment
-        scriptbasename = 'd42'
-        scriptbasename = os.path.basename(scriptbasename)
-        scriptbasename = scriptbasename.replace('.py', '')
-        # SafeConfigParser allows interpolation, passing in os.environ makes
-        #  env variables available
-        config = ConfigParser.SafeConfigParser(os.environ)
-        config.read(os.path.join(os.path.dirname(__file__),
-                                 '{}.ini'.format(scriptbasename)))
-        config.read(os.path.join('{}'.format(os.path.expanduser("~")),
-                                 '.config', '{}.ini'.format(scriptbasename)))
-
-        # start with empty configuration variables
-        self.server, self.user, self.password = [None, None, None]
-
-        # load d42 configuration settings
-        self.server = config.get('d42', 'server')
-        self.user = config.get('d42', 'user')
-        self.password = config.get('d42', 'password')
+    def __init__(self, config):
 
         # setup interface to dev42
-        self.d42_settings = ConfigData(dev42=self.server,
-                                       duser=self.user,
-                                       dpassword=self.password)
+        self.d42_settings = ConfigData(dev42=config.server,
+                                       duser=config.user,
+                                       dpassword=config.password)
 
     def get_by_hostname(self, host):
         """ Queries device42 for info about a single host """
@@ -76,3 +52,26 @@ class D42Connector():
             rtrn['Role'] = ROLE_NORMALIZE.get(rtrn.get('Role'))
 
         return rtrn
+
+def load_config_files():
+    """
+     parse configuration files to get session information.
+      Valid configurations can exist in the ansible
+      repo/inventories/d42.ini and ~/.config/d42.ini. Typically site
+      configuration would be included in the repo, and credentials in your
+      homedir. Also, all variables can be overriden/set through the
+      environment
+    """
+
+    scriptbasename = 'd42'
+    scriptbasename = os.path.basename(scriptbasename)
+    scriptbasename = scriptbasename.replace('.py', '')
+    # SafeConfigParser allows interpolation, passing in os.environ makes
+    #  env variables available
+    config = ConfigParser.SafeConfigParser(os.environ)
+    config.read(os.path.join(os.path.dirname(__file__),
+                             '{}.ini'.format(scriptbasename)))
+    config.read(os.path.join('{}'.format(os.path.expanduser("~")),
+                             '.config', '{}.ini'.format(scriptbasename)))
+
+    return config

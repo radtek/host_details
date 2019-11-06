@@ -1,5 +1,6 @@
 d42:
-  err: '404 Client Error: NOT FOUND for url: https://cmdb.prod.skytap.com/api/1.0/devices/name/tuk8c4b17.qa.skytap.com/'
+  Role: 'c4b'
+  err: []
 datacenter: tuk
 env: '8'
 function: c4b

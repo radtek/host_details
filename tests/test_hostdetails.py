@@ -1,28 +1,64 @@
 import logging
 import yaml
+import mock
 from parameterized import parameterized
-from host_details.tests import BaseTestCase
+from .base import BaseTestCase
 from tests.hostnamemap import HOSTNAMEMAP
 from host_details.hostdetails import HostDetails
-from werkzeug.exceptions import BadRequest
+from host_details.excp import HostDetailException
+
+import pkg_resources
 
 LOGGER = logging.getLogger(__name__)
 
+from types import SimpleNamespace
+
+class TestConfig(SimpleNamespace):
+    server = "localhost"
+    user = "user"
+    password = "password"
+
 class HostDetailsTests(BaseTestCase):
+
+
+
 
     @parameterized.expand(HOSTNAMEMAP)
     def test_hostdetails(self, hostname):
-        with open("fixtures/hostdetails/{}.yaml".format(hostname), "r") as fixraw:
+
+        with mock.patch('host_details.hostdetails.load_config_files') as cfg_mock:
+            # provide fake config to the D42 client.
+            cfg_mock.return_value = TestConfig()
+            with mock.patch('host_details.d42_connector.Devices') as d42_devices_mock:
+                fixture = self._load_fixture(hostname)
+
+                # setup D42 response based on whats known from the fixture file
+                d42_devices_mock.return_value.get_device_byname.return_value = \
+                    {
+                        "custom_fields": [
+                            {
+                                "key": "Role",
+                                "notes": "",
+                                "value": fixture['function']
+                            }
+                        ]
+                    }
+
+                hostdetails = HostDetails(hostname)
+                hostdetails.all_details()
+                LOGGER.debug("details: %s", hostdetails.details)
+                LOGGER.debug("fixture: %s", fixture)
+                self.assertEqual(fixture, hostdetails.details)
+
+    def _load_fixture(self, hostname):
+        fixes_dir = pkg_resources.resource_filename('tests.fixtures', 'hostdetails')
+        with open("{}/{}.yaml".format(fixes_dir, hostname), "r") as fixraw:
             fixture = yaml.load(fixraw)
-        hostdetails = HostDetails(hostname)
-        hostdetails.all_details()
-        LOGGER.debug("details: %s", hostdetails.details)
-        LOGGER.debug("fixture: %s", fixture)
-        self.assertEqual(fixture, hostdetails.details)
+        return fixture
 
     def test_autogroup_regex_match_nothing(self):
         server = "nothing.skytap.com"
-        with self.assertRaises(BadRequest):
+        with self.assertRaises(HostDetailException):
             _ = HostDetails(server)
 
     def test_maprules_prod(self):
