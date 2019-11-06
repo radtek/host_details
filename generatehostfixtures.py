@@ -14,7 +14,7 @@ def main():
         print("processing host: {}".format(host))
         hdetails = HostDetails(host)
         hdetails.all_details()
-        path = pkg_resources.resouce_filename("tests", "fixtures/hostdetails/{}.yaml".format(host))
+        path = pkg_resources.resource_filename("tests", "fixtures/hostdetails/{}.yaml".format(host))
         with open(path, "w") as hostfile:
             yaml.dump(hdetails.details, hostfile)
 
