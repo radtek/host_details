@@ -1,0 +1,18 @@
+foreman:
+  operatingsystem-name: ubuntu_16.04
+  architecture-name: x86_64 
+  partition-table-name: ubuntu
+  medium-name: foundation_tuk1
+  parameters:  []
+  compute-attributes:
+    cpus: 4
+    memory_mb: 32768
+    guest_id: ubuntu64Guest
+skytap:
+  highland_env: prod
+  highland_nodetype: kube_minion
+  role: knode
+zabbix:
+  link_templates: ['Template_Server_Linux_Ubuntu']
+  host_groups: ['Production', 'services.yaml - kubernetes']
+  proxy_name: 0

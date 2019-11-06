@@ -1,0 +1,41 @@
+d42:
+  !!python/unicode 'Role': mn
+  err: []
+datacenter: tuk
+env: '5'
+function: mn
+hostname: tuk5c3b7.mgt.integ.skytap.com
+instance: '7'
+owner: team-tools-virtualinfrastructure
+platform: integ
+region: null
+security:
+  role.authorized:
+  - engineering
+  role.authorized_operator:
+  - team-toolsandservices
+  role.service_owner: team-tools-virtualinfrastructure
+services:
+  cmdb: cmdb.prod.skytap.com
+  foreman: foreman.qa.skytap.com
+  ldap:
+  - tuk8ldap1.qa.skytap.com
+  - tuk8ldap2.qa.skytap.com
+  logger: tuk5m1logger2.mgt.integ.skytap.com
+  mnvcsa: tuk5vcsa1.mgt.integ.skytap.com
+  nsmanage: tuk8nsmanage1.qa.skytap.com
+  ntp:
+  - tuk8ntp1.qa.skytap.com
+  - tuk8ntp2.qa.skytap.com
+  opspuppetca: tuk8opspuppetca3.qa.skytap.com
+  vaultvip: tuk5vaultvip1.qa.skytap.com
+  zabbix: zabbix.qa.skytap.com
+  zabbixjobs: tuk8zabbixjobs1.qa.skytap.com
+  zabbixproxy: tuk8zabbixproxy.qa.skytap.com
+shortname: tuk5c3b7
+subplatform: mgt
+zabbix:
+  groups:
+  - tuk5
+  - team-tools-virtualinfrastructure
+  - team-tools

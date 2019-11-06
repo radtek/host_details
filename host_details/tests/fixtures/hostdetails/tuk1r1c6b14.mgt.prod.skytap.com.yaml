@@ -1,0 +1,39 @@
+d42:
+  !!python/unicode 'Role': nhn
+  err: []
+datacenter: tuk
+datacenterregion: tuk1r1
+env: '1'
+function: nhn
+hostname: tuk1r1c6b14.mgt.prod.skytap.com
+instance: '14'
+owner: team-dataplane-networking
+platform: prod
+region: r1
+security:
+  role.authorized: []
+  role.authorized_operator: []
+  role.service_owner: prod
+services:
+  cmdb: cmdb.prod.skytap.com
+  foreman: foreman.prod.skytap.com
+  ldap:
+  - tuk1ldap1.prod.skytap.com
+  - tuk1ldap2.prod.skytap.com
+  logger: tuk1r1logger2.mgt.prod.skytap.com
+  mnvcsa: tuk1vcsa1.prod.skytap.com
+  nsmanage: tuk1nsmanage2.prod.skytap.com
+  ntp:
+  - tuk1ntp1.prod.skytap.com
+  - tuk1ntp2.prod.skytap.com
+  opspuppetca: tuk1opspuppetca1.prod.skytap.com
+  vaultvip: tuk1vaultvip1.prod.skytap.com
+  zabbix: zabbix.prod.skytap.com
+  zabbixjobs: tuk1zabbixjobs1.prod.skytap.com
+  zabbixproxy: tuk1zabbixproxy.prod.skytap.com
+shortname: tuk1r1c6b14
+subplatform: mgt
+zabbix:
+  groups:
+  - tuk1
+  - team-dataplane-networking

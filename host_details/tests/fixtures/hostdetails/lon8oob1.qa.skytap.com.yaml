@@ -1,0 +1,36 @@
+datacenter: lon
+env: '8'
+function: oob
+hostname: lon8oob1.qa.skytap.com
+instance: '1'
+owner: team-infra-systems
+platform: qa
+region: null
+security:
+  role.authorized:
+  - engineering
+  role.authorized_operator: []
+  role.service_owner: ops
+services:
+  cmdb: cmdb.prod.skytap.com
+  foreman: foreman.qa.skytap.com
+  ldap:
+  - lon8ldap1.qa.skytap.com
+  - lon8ldap2.qa.skytap.com
+  logger: lon6r1logger2.mgt.test.skytap.com
+  mnvcsa: tuk8vcsa1.qa.skytap.com
+  nsmanage: tuk8nsmanage1.qa.skytap.com
+  ntp:
+  - lon8ntp1.qa.skytap.com
+  - lon8ntp2.qa.skytap.com
+  opspuppetca: tuk8opspuppetca3.qa.skytap.com
+  vaultvip: lon6vaultvip1.qa.skytap.com
+  zabbix: zabbix.qa.skytap.com
+  zabbixjobs: lon8zabbixjobs1.qa.skytap.com
+  zabbixproxy: lon8zabbixproxy.qa.skytap.com
+shortname: lon8oob1
+subplatform: null
+zabbix:
+  groups:
+  - lon8
+  - team-infra-systems

@@ -1,0 +1,37 @@
+datacenter: tuk
+datacenterregion: tuk5r1
+env: '5'
+function: ftp
+hostname: tuk5r1ftp2.mgt.integ.skytap.com
+instance: '2'
+owner: team-middle-tier-web-backend
+platform: integ
+region: r1
+security:
+  role.authorized:
+  - engineering
+  role.authorized_operator: []
+  role.service_owner: ops
+services:
+  cmdb: cmdb.prod.skytap.com
+  foreman: foreman.qa.skytap.com
+  ldap:
+  - tuk8ldap1.qa.skytap.com
+  - tuk8ldap2.qa.skytap.com
+  logger: tuk5r1logger2.mgt.integ.skytap.com
+  mnvcsa: tuk5vcsa1.mgt.integ.skytap.com
+  nsmanage: tuk8nsmanage1.qa.skytap.com
+  ntp:
+  - tuk8ntp1.qa.skytap.com
+  - tuk8ntp2.qa.skytap.com
+  opspuppetca: tuk8opspuppetca3.qa.skytap.com
+  vaultvip: tuk5vaultvip1.qa.skytap.com
+  zabbix: zabbix.qa.skytap.com
+  zabbixjobs: tuk8zabbixjobs1.qa.skytap.com
+  zabbixproxy: tuk8zabbixproxy.qa.skytap.com
+shortname: tuk5r1ftp2
+subplatform: mgt
+zabbix:
+  groups:
+  - tuk5
+  - team-middle-tier-web-backend

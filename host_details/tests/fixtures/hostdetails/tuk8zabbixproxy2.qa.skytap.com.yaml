@@ -1,0 +1,36 @@
+datacenter: tuk
+env: '8'
+function: zabbixproxy
+hostname: tuk8zabbixproxy2.qa.skytap.com
+instance: '2'
+owner: team-infra-systems
+platform: qa
+region: null
+security:
+  role.authorized:
+  - engineering
+  role.authorized_operator: []
+  role.service_owner: ops
+services:
+  cmdb: cmdb.prod.skytap.com
+  foreman: foreman.qa.skytap.com
+  ldap:
+  - tuk8ldap1.qa.skytap.com
+  - tuk8ldap2.qa.skytap.com
+  logger: tuk6m1logger2.mgt.test.skytap.com
+  mnvcsa: tuk8vcsa1.qa.skytap.com
+  nsmanage: tuk8nsmanage1.qa.skytap.com
+  ntp:
+  - tuk8ntp1.qa.skytap.com
+  - tuk8ntp2.qa.skytap.com
+  opspuppetca: tuk8opspuppetca3.qa.skytap.com
+  vaultvip: tuk6vaultvip1.qa.skytap.com
+  zabbix: zabbix.qa.skytap.com
+  zabbixjobs: tuk8zabbixjobs1.qa.skytap.com
+  zabbixproxy: tuk8zabbixproxy.qa.skytap.com
+shortname: tuk8zabbixproxy2
+subplatform: null
+zabbix:
+  groups:
+  - tuk8
+  - team-infra-systems

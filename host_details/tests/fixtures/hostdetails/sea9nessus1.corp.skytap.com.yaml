@@ -1,0 +1,35 @@
+datacenter: sea
+env: '9'
+function: nessus
+hostname: sea9nessus1.corp.skytap.com
+instance: '1'
+owner: team-infosec
+platform: corp
+region: null
+security:
+  role.authorized: []
+  role.authorized_operator: []
+  role.service_owner: team-infosec
+services:
+  cmdb: cmdb.prod.skytap.com
+  foreman: foreman.qa.skytap.com
+  ldap:
+  - sea9ldap1.corp.skytap.com
+  - sea9ldap2.corp.skytap.com
+  logger: null
+  mnvcsa: sea9vcsa1.corp.skytap.com
+  nsmanage: sea9nsmanage1.corp.skytap.com
+  ntp:
+  - sea9ntp1.corp.skytap.com
+  - sea9ntp2.corp.skytap.com
+  opspuppetca: tuk8opspuppetca3.qa.skytap.com
+  vaultvip: tuk6vaultvip1.qa.skytap.com
+  zabbix: zabbix.prod.skytap.com
+  zabbixjobs: sea9zabbixjobs1.corp.skytap.com
+  zabbixproxy: sea9zabbixproxy.corp.skytap.com
+shortname: sea9nessus1
+subplatform: null
+zabbix:
+  groups:
+  - sea9
+  - team-infosec

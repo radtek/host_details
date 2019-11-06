@@ -1,0 +1,36 @@
+datacenter: tuk
+env: '9'
+function: npmregistry
+hostname: tuk9npmregistry1.corp.skytap.com
+instance: '1'
+owner: team-frontend
+platform: corp
+region: null
+security:
+  role.authorized:
+  - engineering
+  role.authorized_operator: []
+  role.service_owner: ops
+services:
+  cmdb: cmdb.prod.skytap.com
+  foreman: foreman.prod.skytap.com
+  ldap:
+  - tuk1ldap1.prod.skytap.com
+  - tuk1ldap2.prod.skytap.com
+  logger: null
+  mnvcsa: sea9vcsa1.corp.skytap.com
+  nsmanage: sea9nsmanage1.corp.skytap.com
+  ntp:
+  - tuk1ntp1.prod.skytap.com
+  - tuk1ntp2.prod.skytap.com
+  opspuppetca: tuk8opspuppetca3.qa.skytap.com
+  vaultvip: tuk1vaultvip1.prod.skytap.com
+  zabbix: zabbix.prod.skytap.com
+  zabbixjobs: tuk1zabbixjobs1.prod.skytap.com
+  zabbixproxy: tuk1zabbixproxy.prod.skytap.com
+shortname: tuk9npmregistry1
+subplatform: null
+zabbix:
+  groups:
+  - tuk9
+  - team-frontend

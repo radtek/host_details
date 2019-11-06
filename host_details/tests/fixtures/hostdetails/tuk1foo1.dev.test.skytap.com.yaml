@@ -1,0 +1,36 @@
+datacenter: tuk
+env: '1'
+function: foo
+hostname: tuk1foo1.dev.test.skytap.com
+instance: '1'
+owner: team-unclassified
+platform: test
+region: null
+security:
+  role.authorized:
+  - engineering
+  role.authorized_operator: []
+  role.service_owner: ops
+services:
+  cmdb: cmdb.prod.skytap.com
+  foreman: foreman.qa.skytap.com
+  ldap:
+  - tuk1ldap1.test.skytap.com
+  - tuk1ldap2.test.skytap.com
+  logger: tuk1m1logger2.dev.test.skytap.com
+  mnvcsa: tuk8vcsa1.qa.skytap.com
+  nsmanage: tuk8nsmanage1.qa.skytap.com
+  ntp:
+  - tuk1ntp1.test.skytap.com
+  - tuk1ntp2.test.skytap.com
+  opspuppetca: tuk8opspuppetca3.qa.skytap.com
+  vaultvip: tuk1vaultvip1.test.skytap.com
+  zabbix: zabbix.qa.skytap.com
+  zabbixjobs: tuk1zabbixjobs1.test.skytap.com
+  zabbixproxy: tuk1zabbixproxy.test.skytap.com
+shortname: tuk1foo1
+subplatform: dev
+zabbix:
+  groups:
+  - tuk1
+  - team-unclassified

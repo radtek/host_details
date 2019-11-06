@@ -1,0 +1,35 @@
+datacenter: null
+env: null
+function: vsn
+hostname: vsn108.mgt.test.skytap.com
+instance: '108'
+owner: team-dataplane-storage
+platform: test
+region: null
+security:
+  role.authorized:
+  - engineering
+  role.authorized_operator: []
+  role.service_owner: ops
+services:
+  cmdb: cmdb.prod.skytap.com
+  foreman: foreman.qa.skytap.com
+  ldap:
+  - ldap1.test.skytap.com
+  - ldap2.test.skytap.com
+  logger: logger2.mgt.test.skytap.com
+  mnvcsa: tuk8vcsa1.qa.skytap.com
+  nsmanage: tuk8nsmanage1.qa.skytap.com
+  ntp:
+  - ntp1.test.skytap.com
+  - ntp2.test.skytap.com
+  opspuppetca: tuk8opspuppetca3.qa.skytap.com
+  vaultvip: vaultvip1.test.skytap.com
+  zabbix: zabbix.qa.skytap.com
+  zabbixjobs: zabbixjobs1.test.skytap.com
+  zabbixproxy: zabbixproxy.test.skytap.com
+shortname: vsn108
+subplatform: mgt
+zabbix:
+  groups:
+  - team-dataplane-storage

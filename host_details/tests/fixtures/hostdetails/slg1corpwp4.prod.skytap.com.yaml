@@ -1,0 +1,37 @@
+datacenter: slg
+env: '1'
+function: corpwp
+hostname: slg1corpwp4.prod.skytap.com
+instance: '4'
+owner: team-tools-runtime
+platform: prod
+region: null
+security:
+  role.authorized: []
+  role.authorized_operator:
+  - team-toolsandservices-prod
+  role.service_owner: team-tools-runtime-prod
+services:
+  cmdb: cmdb.prod.skytap.com
+  foreman: foreman.prod.skytap.com
+  ldap:
+  - slg1ldap1.prod.skytap.com
+  - slg1ldap2.prod.skytap.com
+  logger: slg1r1logger2.mgt.prod.skytap.com
+  mnvcsa: tuk1vcsa1.prod.skytap.com
+  nsmanage: tuk1nsmanage2.prod.skytap.com
+  ntp:
+  - slg1ntp1.prod.skytap.com
+  - slg1ntp2.prod.skytap.com
+  opspuppetca: tuk1opspuppetca1.prod.skytap.com
+  vaultvip: slg1vaultvip1.prod.skytap.com
+  zabbix: zabbix.prod.skytap.com
+  zabbixjobs: slg1zabbixjobs1.prod.skytap.com
+  zabbixproxy: slg1zabbixproxy.prod.skytap.com
+shortname: slg1corpwp4
+subplatform: null
+zabbix:
+  groups:
+  - slg1
+  - team-tools-runtime
+  - team-tools

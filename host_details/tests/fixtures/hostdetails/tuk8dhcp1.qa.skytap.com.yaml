@@ -1,0 +1,38 @@
+datacenter: tuk
+env: '8'
+function: dhcp
+hostname: tuk8dhcp1.qa.skytap.com
+instance: '1'
+owner: team-tools-runtime
+platform: qa
+region: null
+security:
+  role.authorized:
+  - engineering
+  role.authorized_operator:
+  - team-toolsandservices
+  role.service_owner: team-tools-runtime
+services:
+  cmdb: cmdb.prod.skytap.com
+  foreman: foreman.qa.skytap.com
+  ldap:
+  - tuk8ldap1.qa.skytap.com
+  - tuk8ldap2.qa.skytap.com
+  logger: tuk6m1logger2.mgt.test.skytap.com
+  mnvcsa: tuk8vcsa1.qa.skytap.com
+  nsmanage: tuk8nsmanage1.qa.skytap.com
+  ntp:
+  - tuk8ntp1.qa.skytap.com
+  - tuk8ntp2.qa.skytap.com
+  opspuppetca: tuk8opspuppetca3.qa.skytap.com
+  vaultvip: tuk6vaultvip1.qa.skytap.com
+  zabbix: zabbix.qa.skytap.com
+  zabbixjobs: tuk8zabbixjobs1.qa.skytap.com
+  zabbixproxy: tuk8zabbixproxy.qa.skytap.com
+shortname: tuk8dhcp1
+subplatform: null
+zabbix:
+  groups:
+  - tuk8
+  - team-tools-runtime
+  - team-tools

@@ -1,0 +1,16 @@
+
+foreman:
+  operatingsystem-name: legacy_Ubuntu 12.04 LTS 
+  architecture-name: x86_64 
+  partition-table-name: Skytap stack - mysqlns 
+  medium-name: zzz_unmanaged_Skytap 12.04 Repository 
+  compute-attributes:
+    cpus: 2
+    memory_mb: 16384
+    guest_id: ubuntu64Guest
+skytap:
+  role: mysqlns
+  highland_nodetype: mysql
+zabbix:
+  link_templates: ['Template Mounted Filesystem Discovery','Template_app_database','Template_Server_Linux_Ubuntu']
+  host_groups: ['Production', 'services.yaml - mysql-cluster']

@@ -1,0 +1,39 @@
+datacenter: tuk
+datacenterregion: tuk6r1
+env: '6'
+function: knode
+hostname: tuk6r1knode1.mgt.test.skytap.com
+instance: '1'
+owner: team-tools-kubernetes
+platform: test
+region: r1
+security:
+  role.authorized:
+  - engineering
+  role.authorized_operator:
+  - team-toolsandservices
+  role.service_owner: team-tools-kubernetes
+services:
+  cmdb: cmdb.prod.skytap.com
+  foreman: foreman.qa.skytap.com
+  ldap:
+  - tuk8ldap1.qa.skytap.com
+  - tuk8ldap2.qa.skytap.com
+  logger: tuk6r1logger2.mgt.test.skytap.com
+  mnvcsa: tuk8vcsa1.qa.skytap.com
+  nsmanage: tuk8nsmanage1.qa.skytap.com
+  ntp:
+  - tuk8ntp1.qa.skytap.com
+  - tuk8ntp2.qa.skytap.com
+  opspuppetca: tuk8opspuppetca3.qa.skytap.com
+  vaultvip: tuk6vaultvip1.qa.skytap.com
+  zabbix: zabbix.qa.skytap.com
+  zabbixjobs: tuk8zabbixjobs1.qa.skytap.com
+  zabbixproxy: tuk8zabbixproxy.qa.skytap.com
+shortname: tuk6r1knode1
+subplatform: mgt
+zabbix:
+  groups:
+  - tuk6
+  - team-tools-kubernetes
+  - team-tools
