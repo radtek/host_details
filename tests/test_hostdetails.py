@@ -18,10 +18,11 @@ class TestConfig(SimpleNamespace):
     user = "user"
     password = "password"
 
+    def get(self, section, key):
+        return getattr(self, key)
+
+
 class HostDetailsTests(BaseTestCase):
-
-
-
 
     @parameterized.expand(HOSTNAMEMAP)
     def test_hostdetails(self, hostname):

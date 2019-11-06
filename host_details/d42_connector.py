@@ -22,9 +22,10 @@ class D42Connector():
     def __init__(self, config):
 
         # setup interface to dev42
-        self.d42_settings = ConfigData(dev42=config.server,
-                                       duser=config.user,
-                                       dpassword=config.password)
+        self.d42_settings = ConfigData(dev42=config.get('d42', 'server'),
+                                       duser=config.get('d42', 'user'),
+                                       dpassword=config.get('d42', 'password')
+                                       )
 
     def get_by_hostname(self, host):
         """ Queries device42 for info about a single host """
